@@ -11,7 +11,7 @@ class Receipt
 
   def items
     @order.items.map do |item|
-      "#{item[:quantity]} #{item[:title]}: #{item[:subtotal]}\n"
+      "#{item[:quantity]} #{item[:title]}: #{'%.2f' % item[:subtotal]}\n"
     end.join
   end
 
