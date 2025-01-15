@@ -12,7 +12,8 @@ module ShoppingBasket
 
     def items
       @order.items.map do |item|
-        "#{item[:quantity]} #{item[:title]}: #{'%.2f' % item[:subtotal]}\n"
+        subtotal = '%.2f' % (item[:price] * item[:quantity])
+        "#{item[:quantity]} #{item[:title]}: #{subtotal}\n"
       end.join
     end
 
