@@ -1,15 +1,15 @@
 require_relative './test_helper'
 
 class ReceiptTest < Minitest::Test
-  Order = Struct.new(:items)
+  Order = Struct.new(:items, :total_tax, :total_cost)
 
   def setup
-    @order = Order.new([
+    @items = [
       {quantity: 2, title: "book", subtotal: 24.98},
       {quantity: 1, title: "music CD", subtotal: 16.49},
       {quantity: 1, title: "chocolate bar", subtotal: 0.85},
-    ])
-    binding.pry
+    ]
+    @order = Order.new(@items, 1.50, 42.32)
   end
 
   def test_receipt_items
@@ -20,6 +20,16 @@ class ReceiptTest < Minitest::Test
     HERE
 
     actual = Receipt.new(@order).items
+
+    assert_equal expected, actual
+  end
+
+  def test_receipt_tax
+    expected = <<~HERE
+      Sales Taxes: 1.50
+    HERE
+
+    actual = Receipt.new(@order).sales_tax
 
     assert_equal expected, actual
   end

@@ -14,4 +14,8 @@ class Receipt
       "#{item[:quantity]} #{item[:title]}: #{item[:subtotal]}\n"
     end.join
   end
+
+  def sales_tax
+    "Sales Taxes: #{'%.2f' % @order.total_tax}\n"
+  end
 end
