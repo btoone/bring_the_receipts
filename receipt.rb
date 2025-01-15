@@ -1,6 +1,4 @@
 module ShoppingBasket
-  SALES_TAX_RATE = 0.10
-
   class Receipt
     # attr_reader :order
 
@@ -14,7 +12,7 @@ module ShoppingBasket
 
     def items
       @order.items.map do |item|
-        "#{item[:quantity]} #{item[:title]}: #{'%.2f' % subtotal(item)}\n"
+        "#{item[:quantity]} #{item[:title]}: #{'%.2f' % item[:subtotal]}\n"
       end.join
     end
 
@@ -24,17 +22,6 @@ module ShoppingBasket
 
     def total_cost
       "Total: #{'%.2f' % @order.total_cost}\n"
-    end
-
-    private
-
-    def subtotal(item)
-      tax = item[:price] * SALES_TAX_RATE
-      subtotal = (item[:price] * item[:quantity]) 
-
-      return subtotal if item[:exempt]
-        
-      subtotal + tax
     end
   end
 end
