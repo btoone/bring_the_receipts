@@ -1,4 +1,5 @@
 require_relative './receipt'
+require_relative './order'
 
 # MINITEST_REPORTER=SpecReporter rake
 require 'minitest/reporters'
