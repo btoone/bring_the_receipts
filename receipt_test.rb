@@ -45,7 +45,6 @@ class ReceiptTest < Minitest::Test
   end
 
   def test_receipt_output
-    skip
     expected = <<~HERE
       2 book: 24.98
       1 music CD: 16.49

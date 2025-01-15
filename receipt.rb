@@ -6,7 +6,7 @@ class Receipt
   end
 
   def to_s
-    items
+    [items, total_tax, total_cost].join
   end
 
   def items
