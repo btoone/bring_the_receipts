@@ -1,3 +1,4 @@
+module ShoppingBasket
 class Receipt
   # attr_reader :order
 
@@ -22,4 +23,5 @@ class Receipt
   def total_cost
     "Total: #{'%.2f' % @order.total_cost}\n"
   end
+end
 end

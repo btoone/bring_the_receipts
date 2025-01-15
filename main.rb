@@ -10,5 +10,5 @@ items = [
 
 order = Order.new(items, 1.50, 42.32)
 
-receipt = Receipt.new(order)
+receipt = ShoppingBasket::Receipt.new(order)
 puts receipt

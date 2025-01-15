@@ -1,5 +1,6 @@
 require_relative './test_helper'
 
+module ShoppingBasket
 class ReceiptTest < Minitest::Test
   Order = Struct.new(:items, :total_tax, :total_cost)
 
@@ -11,7 +12,9 @@ class ReceiptTest < Minitest::Test
     ]
     @order = Order.new(@items, 1.50, 42.32)
   end
+end
 
+class PlainItemsReceiptTest < ReceiptTest
   def test_receipt_items
     expected = <<~HERE
       2 book: 24.98
@@ -57,4 +60,11 @@ class ReceiptTest < Minitest::Test
 
     assert_equal expected, actual
   end
+end
+
+class ImportedItemsReceiptTest < ReceiptTest
+  def test_foo
+    assert_equal 1,1
+  end
+end
 end
