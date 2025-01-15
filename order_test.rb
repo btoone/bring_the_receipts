@@ -16,6 +16,16 @@ module ShoppingBasket
       assert_equal @order.items, @items
     end
 
+    def test_calculates_subtotal
+      regular_item = @items[1]
+      assert_equal 16.49, @order.subtotal(regular_item)
+    end
+
+    def test_calculates_subtotal_on_exempt_items
+      exempt_item = @items[0]
+      assert_equal 24.98, @order.subtotal(exempt_item)
+    end
+
     def test_adds_subtotal_to_item
       assert_includes @order.items[0].keys, :subtotal
     end
