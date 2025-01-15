@@ -34,6 +34,16 @@ class ReceiptTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_receipt_total_cost
+    expected = <<~HERE
+      Total: 42.32
+    HERE
+
+    actual = Receipt.new(@order).total_cost
+
+    assert_equal expected, actual
+  end
+
   def test_receipt_output
     skip
     expected = <<~HERE

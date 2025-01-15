@@ -18,4 +18,8 @@ class Receipt
   def total_tax
     "Sales Taxes: #{'%.2f' % @order.total_tax}\n"
   end
+
+  def total_cost
+    "Total: #{'%.2f' % @order.total_cost}\n"
+  end
 end
