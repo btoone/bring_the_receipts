@@ -6,9 +6,9 @@ module ShoppingBasket
 
     def setup
       @items = [
-        {quantity: 2, title: "book", price: 12.49},
-        {quantity: 1, title: "music CD", price: 14.99},
-        {quantity: 1, title: "chocolate bar", price: 0.85},
+        {quantity: 2, title: "book", price: 12.49, exempt: true},
+        {quantity: 1, title: "music CD", price: 14.99, exempt: false},
+        {quantity: 1, title: "chocolate bar", price: 0.85, exempt: true},
       ]
       @order = Order.new(@items, 1.50, 42.32)
     end
@@ -18,7 +18,7 @@ module ShoppingBasket
     def test_receipt_items
       expected = <<~HERE
         2 book: 24.98
-        1 music CD: 14.99
+        1 music CD: 16.49
         1 chocolate bar: 0.85
       HERE
 
@@ -50,7 +50,7 @@ module ShoppingBasket
     def test_receipt_output
       expected = <<~HERE
         2 book: 24.98
-        1 music CD: 14.99
+        1 music CD: 16.49
         1 chocolate bar: 0.85
         Sales Taxes: 1.50
         Total: 42.32
