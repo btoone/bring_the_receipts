@@ -15,7 +15,7 @@ class Receipt
     end.join
   end
 
-  def sales_tax
+  def total_tax
     "Sales Taxes: #{'%.2f' % @order.total_tax}\n"
   end
 end

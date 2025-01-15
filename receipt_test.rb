@@ -24,12 +24,12 @@ class ReceiptTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_receipt_tax
+  def test_receipt_total_tax
     expected = <<~HERE
       Sales Taxes: 1.50
     HERE
 
-    actual = Receipt.new(@order).sales_tax
+    actual = Receipt.new(@order).total_tax
 
     assert_equal expected, actual
   end
