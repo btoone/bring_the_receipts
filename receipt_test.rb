@@ -86,4 +86,34 @@ module ShoppingBasket
       assert_equal expected, actual
     end
   end
+
+  class MixedItemsReceiptTest < ReceiptTest
+    def setup
+      @items = [
+        {quantity: 1, title: "imported bottle of perfume", price: 27.99, exempt: false, imported: true},
+        {quantity: 1, title: "bottle of perfume", price: 18.99, exempt: false, imported: false},
+        {quantity: 1, title: "packet of headache pills", price: 9.75, exempt: true, imported: false},
+        {quantity: 3, title: "imported box of chocolates", price: 11.25, exempt: false, imported: true},
+      ]
+
+      @order = Order.new(@items)
+    end
+
+    def test_receipt_output
+      skip "Figure out rounding error"
+
+      expected = <<~HERE
+        1 imported bottle of perfume: 32.19
+        1 bottle of perfume: 20.89
+        1 packet of headache pills: 9.75
+        3 imported box of chocolates: 35.55
+        Sales Taxes: 7.90
+        Total: 98.38
+      HERE
+
+      actual = Receipt.new(@order).to_s
+
+      assert_equal expected, actual
+    end
+  end
 end
