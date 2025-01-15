@@ -15,6 +15,10 @@ module ShoppingBasket
     def test_returns_items
       assert_equal @order.items, @items
     end
+
+    def test_adds_subtotal_to_item
+      assert_includes @order.items[0].keys, :subtotal
+    end
   end
 end
 
